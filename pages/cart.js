@@ -10,25 +10,35 @@ const Cart = () => {
   const cartRef = useRef();
   const {cartItems, totalPrice, totalQty, onRemove, toggleCartItemQuantity} = useStateContext();
 
-  const handleCheckout = async () => {
-    const stripe = await getStripe();
+const handleCheckout = async () => {
+  const stripe = await getStripe();
 
-    const response = await fetch('/api/stripe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(cartItems),
-    });
+  const response = await fetch('/api/stripe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(cartItems),
+  });
 
-    if(response.statusCode === 500) return;
-    
-    const data = await response.json();
-
-    toast.loading('Redirecting...');
-
-    stripe.redirectToCheckout({ sessionId: data.id });
+  if (!response.ok) {
+    toast.error('Failed to create Stripe session.');
+    return;
   }
+
+  const data = await response.json();
+
+  if (!data.id) {
+    toast.error('No session ID returned from server.');
+    return;
+  }
+
+  toast.loading('Redirecting to Stripe...');
+  const result = await stripe.redirectToCheckout({ sessionId: data.id });
+
+  if (result.error) {
+    toast.error(result.error.message);
+  }
+};
+
 
   return (
     <div className='cart-wrapper' ref={cartRef}>
