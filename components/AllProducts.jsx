@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { urlFor } from '../lib/client'
 
 const Allproducts = ({allproducts: {image, name, slug, tags, price}}) => {  
+  const prices = price *10 
   return (
         <div>
           <Link href={`/product/${slug.current}`}>
@@ -10,7 +11,8 @@ const Allproducts = ({allproducts: {image, name, slug, tags, price}}) => {
               <img src={urlFor(image && image[0])} width={250} height={270} />
               <p className='Allproduct-name'>{name}</p>
               <p className='Allproduct-tags'>{tags}</p>
-              <p className='Allproduct-price'>${price}</p>
+             
+              <p className='Allproduct-price'>₹{prices}</p>
             </div>
           </Link>
         </div>

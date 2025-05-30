@@ -116,6 +116,14 @@ nav input {
   text-align: center;
   font-weight: 600;
 }
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 
 /*-------------------- HEADER SECTION ------------------*/
 .header {
@@ -142,18 +150,18 @@ nav input {
 }
 .header-content span {
   background-color: #e1edff;
-  height: 40px;
-  width: 120px;
+  height: 60px;
+  width: 300px;
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: blue;
+  color: rgb(208, 0, 255);
   font-weight: 600;
 }
 .header-content h1 {
-  font-weight: 700;
-  font-size: 3.5rem;
+  font-weight: 600;
+  font-size: 2.5rem;
   line-height: 55px;
   letter-spacing: 0.03em;
   color: #212121;
@@ -162,8 +170,8 @@ nav input {
   font-weight: 400;
   font-size: 1rem;
   line-height: 24px;
-  color: #666666;
-  width: 70%;
+  color: #0c0c0c;
+  width: 110%;
 }
 .header-content .btn {
   padding: 1rem;
@@ -198,21 +206,71 @@ nav input {
   flex-direction: column;
   gap: 1rem;
 }
+.decorative-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.subtitle {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  color: #d30000;
+  font-family: 'Merry Christmas', cursive;
+}
+
+.animated-deco {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.float {
+  animation-name: floatY;
+}
+
+.sway {
+  animation-name: swayX;
+}
+
+@keyframes floatY {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes swayX {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
 .event-card:first-child {
-  background-color: #D6D6D8;
+  background-color: #79797a;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
   letter-spacing: 0.05em;  
   color: #212121;
+   
 }
 .event-card:first-child img {
   width: 260px;
   height: 200px;
 }
 .event-card:last-child {
-  background-color: #212121;
+  background-color: #606060;
   color: white;
   display: flex;
   flex-direction: column;

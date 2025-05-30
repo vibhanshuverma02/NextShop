@@ -57,7 +57,7 @@ const ProductDetails = ({products, product}) => {
                     </div>
                     <div className='add-to-cart'>
                         <button className='btn' type='button' onClick={() => onAdd(product, qty)}><CgShoppingCart size={20} />Add to Cart</button>
-                        <p className='price'>${price}.00</p>  
+                        <p className='price'>₹{price*10}.00</p>  
                     </div>
                 </div>
             </div>
