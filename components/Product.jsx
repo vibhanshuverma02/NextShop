@@ -1,23 +1,20 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React from 'react'
+import Link from 'next/link'
+import { urlFor } from '../lib/client'
 
-const Product = ({ product }) => {
+const Product = ({product: {image, name, slug, price}}) => {
+  const prices = price *10;
   return (
-    <div className="product-card">
-      <Link href={`/product/${product.slug.current}`}>
-        <Image 
-          src={product.image} 
-          alt={product.name} 
-          width={300} 
-          height={300} 
-          className="product-image"
-        />
-        <h3>{product.name}</h3>
-        <p>${product.price}</p>
+    <div>
+      <Link href={`/product/${slug.current}`}>
+        <div className='product-card'>
+          <img src={urlFor(image && image[0])} width={380} height={400} className='product-image' />
+          <p className='product-name'>{name}</p>
+          <p className='product-price'>₹{prices}</p>
+        </div>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product
